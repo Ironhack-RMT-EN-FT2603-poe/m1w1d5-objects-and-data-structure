@@ -108,3 +108,107 @@ console.log(allObjectKeys.length)
 
 virtualPet2.favFoods.pop() // removing the apples from the favFood
 console.log(virtualPet2)
+
+
+
+//* methods
+
+let virtualPet3 = {
+  name: "Pugsy",
+  version: 1.0,
+  isHappy: true,
+  favFoods: ["fish", "carrots", "apples"],
+  greet() {
+    // in methods we have access to a specific keyword called this
+    // console.log(this)
+    let greetMessage = `${this.name} is waving Hello!`
+    return greetMessage
+  },
+  toggleMood() {
+    if (this.isHappy === true) {
+      this.isHappy = false
+      return `${this.name} is no longer happy :(`
+    } else {
+      this.isHappy = true
+      return `${this.name} now happy! :)`
+    }
+  },
+  feedRandomFood() {
+
+    // how to access the array of foods? this.favFoods
+    let randomNumber = Math.random() * 3 // 0 - 2.9999999
+    // console.log(randomNumber)
+
+    let randomIndex = Math.floor(randomNumber)
+    // console.log(randomIndex)
+
+    let randomFood = this.favFoods[randomIndex]
+    // console.log(randomFood)
+    // how do we generate something random?
+    // how do we target elements in an array?
+
+    let message = `${this.name} is eating ${randomFood} !`
+    return message
+  }
+}
+console.log( virtualPet3.greet() )
+
+virtualPet3.name = "Paquita"
+console.log( virtualPet3.greet() )
+
+console.log( virtualPet3.toggleMood() )
+console.log( virtualPet3.toggleMood() )
+
+console.log( virtualPet3.feedRandomFood() )
+
+
+//* Data structure
+
+const users = [
+  {
+    username: "Samuel",
+    salary: 20000,
+    occupation: "junior",
+  },
+  {
+    username: "Jenny",
+    salary: 22000,
+    occupation: "junior II",
+  },
+  {
+    username: "Val",
+    salary: 36000,
+    occupation: "senior",
+  },
+  {
+    username: "Luis",
+    salary: 42000,
+    occupation: "PM",
+  },
+];
+
+// print the occupation of user #2
+console.log(users[1].occupation)
+
+// change the username of user #3
+let newUsername = "Valentina"
+users[2].username = newUsername
+
+
+// how can we increase the salary of the first user by 2000 euros
+users[0].salary += 2000
+
+
+// we need to add a new user to the array. Ruth, GM, 56000
+users.unshift({
+  username: "Ruth",
+  salary: 56000,
+  occupation: "GM"
+})
+
+// increase the salary of everyone by 10%
+for (let i = 0; i < users.length; i++) {
+  users[i].salary *= 1.1
+} 
+
+console.log(users)
